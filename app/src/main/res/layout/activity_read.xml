@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ReaderActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Recycler View widget-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal" />
+
+        <FrameLayout
+            android:id="@+id/ad_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true" />
+
+    <RelativeLayout
+    android:id="@+id/whole_layout"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView android:id="@+id/itemNameHolder" android:layout_width="match_parent" android:layout_height="match_parent"
+                     app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <TextView android:textSize="20sp" android:id="@+id/desc" android:focusable="true"
+                        android:longClickable="true" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_margin="10dp"
+                        android:lineSpacingMultiplier="1.2" android:textIsSelectable="true"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:gravity="center_vertical|center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/tvWait"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="@string/pls_wait"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+                    <Button
+                        android:id="@+id/btnRetry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="Try again"
+                        android:textAlignment="center"
+
+                        android:visibility="invisible"/>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+<!--                <com.google.android.ads.nativetemplates.TemplateView-->
+<!--                    android:id="@+id/my_template_medium"-->
+<!--                    app:gnt_template_type="@layout/gnt_medium_template_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content" />-->
+
+                <!--Recycler View widget-->
+                <TextView
+                    android:id="@+id/tvRelated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Related/Same Writer"
+                    android:visibility="invisible"
+                    android:textSize="20sp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerviewRelated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="horizontal"
+                    android:scrollbarSize="10dp"/>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="15dp"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100dp" android:layout_alignParentRight="true" android:layout_centerHorizontal="true">
+        <ImageButton android:id="@+id/zoom_in" android:background="@null" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/ic_zoom_in"/>
+        <ImageButton android:id="@+id/zoom_out" android:background="@null" android:layout_width="30dp" android:layout_height="30dp" android:src="@drawable/ic_zoom_out"/>
+    </LinearLayout>
+
+</RelativeLayout>
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/recyclerviewCategory"
+        app:layout_anchorGravity="bottom|start"
+        app:srcCompat="@drawable/ic_menu_share"
+
+        android:background="@color/cardview_dark_background"
+        app:fabSize="mini" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/recyclerviewCategory"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_un_bookmark"
+
+        android:background="@color/cardview_dark_background"
+        app:fabSize="mini"  />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

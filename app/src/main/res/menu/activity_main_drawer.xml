@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_dialog_dialer"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_bookmarks"
+            android:icon="@drawable/ic_bookmark"
+            android:title="@string/menu_bookmarks" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_share" />
+        </menu>
+    </item>
+
+    <item android:title="@string/about">
+        <menu>
+            <item
+                android:id="@+id/nav_rate"
+                android:icon="@android:drawable/star_big_on"
+                android:title="@string/action_rate" />
+            <item
+                android:id="@+id/nav_store"
+                android:icon="@android:drawable/ic_dialog_dialer"
+                android:title="@string/action_store" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@android:drawable/ic_dialog_info"
+                android:title="@string/about" />
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@android:drawable/ic_delete"
+                android:title="@string/exit" />
+        </menu>
+    </item>
+
+</menu>

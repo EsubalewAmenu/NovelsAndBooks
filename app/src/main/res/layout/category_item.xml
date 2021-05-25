@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!-- A CardView that contains a TextView -->
+<androidx.cardview.widget.CardView
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/cardview"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+card_view:contentPadding="8dp"
+card_view:cardCornerRadius="8dp"
+card_view:cardElevation="8dp"
+card_view:cardBackgroundColor="#0F9D58"
+android:layout_margin="1dp"
+    >
+
+<!--Text View over Card View-->
+<TextView
+    android:id="@+id/textview"
+    android:layout_gravity="center"
+android:textSize="18dp"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textColor="#fff"/>
+
+</androidx.cardview.widget.CardView>

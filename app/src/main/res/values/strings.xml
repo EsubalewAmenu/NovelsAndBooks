@@ -1,0 +1,40 @@
+<resources>
+    <string name="home_banner_ad_unit_id">ca-app-pub-8011674951494696/2149032912</string>
+    <string name="reader_banner_ad_unit_id">ca-app-pub-8011674951494696/9027455971</string>
+
+    <string name="app_name">Novels and Books</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Books And Novels</string>
+    <string name="nav_header_subtitle">apps@datascienceplc.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_bookmarks">Bookmarks</string>
+    <string name="menu_share">Share</string>
+
+    <!-- Strings related to the network-->
+    <string name="no_network_title">No Network Available</string>
+    <string name="no_network_message">We cannot detect a network connection on this device. Please check your mobile data or Wi-Fi and try again.</string>
+    <string name="check_network">No network available.\nPlease make sure you are connected to the Internet.</string>
+
+    <!-- Dialog button text -->
+    <string name="cancel">Cancel</string>
+    <string name="go_to_settings">Go to settings</string>
+
+    <string name="about">About</string>
+    <string name="action_rate">Rate us</string>
+    <string name="action_store">App Store</string>
+    <string name="exit">Exit</string>
+
+    <string name="app_description">Novels and Books is a very convenient app for reading books ,classic works of English literature and covers almost all genres: fiction, philosophical treatises, memoirs, children\'s books and others.\n
+You do not have to search a book just download our app and you will always have a massive e-book collection of the best English-language writers within reach! In the list authors you will be agreeably surprised to find not only the famous names like Charles Dickens, Arthur Conan Doyle, Jane Austen, Lewis Carroll, Mark Twain, many others.
+\n\nImportant! All the novels, images and brands are the property of their respective owners.
+\nAll information has been reproduced here for educational and informational purposes to benefit app users.
+\n\nThe Company does not guarantee the accuracy of the data or all other information nor have direct or indirect responsibility to update any information.
+\n\nTrademarks and brands are the property of their respective owners.</string>
+    <string name="pls_wait">Please Wait....</string>
+    <string name="action_toolbar_at_top">Toolbar at top</string>
+    <string name="retry">Re-try</string>
+</resources>
