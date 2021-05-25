@@ -1,6 +1,9 @@
 <resources>
-    <string name="home_banner_ad_unit_id">ca-app-pub-8011674951494696/2149032912</string>
-    <string name="reader_banner_ad_unit_id">ca-app-pub-8011674951494696/9027455971</string>
+<!--    <string name="home_banner_ad_unit_id">ca-app-pub-8011674951494696/2149032912</string>-->
+<!--    <string name="reader_banner_ad_unit_id">ca-app-pub-8011674951494696/9027455971</string>-->
+
+    <string name="home_banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="reader_banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="app_name">Novels and Books</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -506,6 +506,7 @@ HomeFragment homeFragment;
 
         int adWidth = (int) (adWidthPixels / density);
 
-        return AdSize.getCurrentOrientationBannerAdSizeWithWidth(this, adWidth);
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+//        return AdSize.getCurrentOrientationBannerAdSizeWithWidth(this, adWidth);
     }
 }
