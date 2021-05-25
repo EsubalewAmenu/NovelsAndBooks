@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity
 /////
 HomeFragment homeFragment;
 
+    public static int interstitialCounter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

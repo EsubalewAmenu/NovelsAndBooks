@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -16,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.Html;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,12 +23,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,13 +42,17 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.herma.apps.novelsandbooks.ui.about.About_us;
 import com.herma.apps.novelsandbooks.usefull.CategoryAdapter;
@@ -119,12 +122,14 @@ RecyclerView recyclerViewCategory;
     ////////////////////////////////
 
     private AdView adView;
+    private InterstitialAd mInterstitialAd;
     private FrameLayout adContainerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read);;
+        setContentView(R.layout.activity_read);
+        ;
 
         mydb = new DBHelper(this);
 
@@ -148,19 +153,19 @@ RecyclerView recyclerViewCategory;
         fab.setOnClickListener(this);
 
         id = getIntent().getIntExtra("id", 0);
-            blogposts_count = getIntent().getIntExtra("blogposts_count", 0);
-            writerName = getIntent().getStringExtra("writername");
-            blogwriter_id = getIntent().getIntExtra("blogwriter_id", 0);
-            categoryName = getIntent().getStringExtra("name");
+        blogposts_count = getIntent().getIntExtra("blogposts_count", 0);
+        writerName = getIntent().getStringExtra("writername");
+        blogwriter_id = getIntent().getIntExtra("blogwriter_id", 0);
+        categoryName = getIntent().getStringExtra("name");
 
         SharedPreferences pre = PreferenceManager.getDefaultSharedPreferences(ReaderActivity.this);
         String book_writername = pre.getString("writername", "");
-        if(!book_writername.equals(writerName)) {
+        if (!book_writername.equals(writerName)) {
             setPreference();
         }
 
         blogContent = "";
-setter(categoryName, writerName);
+        setter(categoryName, writerName);
 
         initializeChapters();
 
@@ -199,7 +204,42 @@ setter(categoryName, writerName);
             }
         });
 
+        MainActivity.interstitialCounter++;
+
+        if(MainActivity.interstitialCounter % 5 == 0) buildInterstitialAd();
+
     }
+
+    private void buildInterstitialAd() {
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this,getString(R.string.interestitial_ad), adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                mInterstitialAd = interstitialAd;
+
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(ReaderActivity.this);
+                } else {
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                }
+
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.i("TAG", loadAdError.getMessage());
+                mInterstitialAd = null;
+            }
+        });
+
+    }
+
     /** Called when leaving the activity */
     @Override
     public void onPause() {
